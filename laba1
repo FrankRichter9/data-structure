@@ -1,0 +1,63 @@
+
+  
+class ArrayTest {
+
+    constructor(max) {
+        this._a = new Array(max);
+        this._nElems = 0;
+    }
+
+    get a() {
+        return this._a;
+    }
+
+    find(searchKey) {
+        for (let j = 0; j < this._nElems; j++) {
+            if (this._a[j] == searchKey) return true;
+        }
+        return false;
+    }
+
+    insert(value) {
+        this._a[this._nElems] = value;
+        this._nElems++;
+    }
+
+    delete(value) {
+        for (let i = 0; i < this._nElems; i++) {
+            if (this._a[i] === value) {
+                this._a.splice(i, 1);
+                i--;
+                this._nElems--;
+            }
+        }
+    }
+
+    display() {
+        let result = "";
+        for (let j = 0; j < this._nElems; j++) {
+            result += this._a[j] + "  ";
+        }
+        console.log(result);
+    }
+}
+
+
+
+let arrayTest = new ArrayTest(30);
+
+for (let i = 0; i < arrayTest.a.length; i++) {
+    arrayTest.insert(Math.round(Math.random() * 10));
+}
+
+arrayTest.display();
+
+if (arrayTest.find(4)) {
+    arrayTest.delete(4);
+}
+
+if (arrayTest.find(0)) {
+    arrayTest.delete(0);
+}
+
+
